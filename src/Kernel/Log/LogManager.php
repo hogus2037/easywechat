@@ -44,7 +44,7 @@ class LogManager implements LoggerInterface
         return $this->createStackDriver(compact('channels', 'channel'));
     }
 
-    public function channel($channel = null): mixed
+    public function channel($channel = null): LoggerInterface
     {
         return $this->driver($channel);
     }
@@ -256,7 +256,7 @@ class LogManager implements LoggerInterface
         return $config['name'] ?? 'EasyWeChat';
     }
 
-    protected function level(array $config): string
+    protected function level(array $config): int
     {
         $level = $config['level'] ?? 'debug';
 
