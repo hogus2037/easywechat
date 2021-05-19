@@ -35,7 +35,7 @@ trait InteractsWithCache
         return $this->cache = $this->createDefaultCache();
     }
 
-    public function setCache(SimpleCacheInterface|CacheItemPoolInterface $cache): static
+    public function setCache(SimpleCacheInterface | CacheItemPoolInterface $cache): static
     {
         if (empty(\array_intersect([SimpleCacheInterface::class, CacheItemPoolInterface::class], \class_implements($cache)))) {
             throw new InvalidArgumentException(\sprintf('The cache instance must implements %s or %s interface.', SimpleCacheInterface::class, CacheItemPoolInterface::class));
@@ -53,7 +53,7 @@ trait InteractsWithCache
         return $this;
     }
 
-    protected function createDefaultCache(): Psr16Cache|FilesystemCache
+    protected function createDefaultCache(): Psr16Cache | FilesystemCache
     {
         if ($this->isSymfony43OrHigher()) {
             return new Psr16Cache(new FilesystemAdapter('easywechat', 1500));
